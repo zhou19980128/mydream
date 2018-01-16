@@ -1,0 +1,21 @@
+再来复习一下创建新仓库的指令：
+
+git init //把这个目录变成Git可以管理的仓库
+git add README.md  //文件添加到仓库
+git add . //不但可以跟单一文件，还可以跟通配符，更可以跟目录。一个点就把当前目录下所有未追踪的文件全部add了 
+git commit -m "first commit" //把文件提交到仓库
+git remote add origin git@github.com:wangjiax9/practice.git //关联远程仓库
+git push -u origin master //把本地库的所有内容推送到远程库上
+
+
+
+git上传教程：http://blog.csdn.net/llf369477769/article/details/51917557
+
+git上传出现本地与远程不同步时：
+问题解决https://jingyan.baidu.com/article/f3e34a12a25bc8f5ea65354a.html
+
+大致分为以下几步：
+1.注册github.创建一个仓库
+2.SSH密钥
+3.在本地创建你的项目，修改你的项目。完成之后，上面的操作指令就是用来将文件提交的。
+4.刚才我们出现了一个问题，就是我在远程仓库上创建了readme文档，所以我找了一篇文章，意思就是让本地仓库和远程仓库先同步一下，然后再进行上传。
