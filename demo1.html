@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="weui.css">
+    <link rel="stylesheet" href="jquery-weui.css">
+    <style>
+      html,body{width: 100%;height: 100%}
+    </style>
+</head>
+<body>
+   <!-- <a href="javascript:;" id='show-loading' class="weui-btn weui-btn_primary">显示 Loading</a> -->
+   <!-- 大容器 -->
+<div class="weui-tab">
+    <!-- 内容层 -->
+  <div class="weui-tab__bd">
+    <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+      <h1>页面一</h1>
+    </div>
+    <div id="tab2" class="weui-tab__bd-item">
+      <h1>页面二</h1>
+    </div>
+    <div id="tab3" class="weui-tab__bd-item">
+      <h1>页面3</h1>
+    </div>
+    <div id="tab4" class="weui-tab__bd-item">
+      <h1>页面4</h1>
+    </div>
+  </div>
+<!--这是tabbar层  -->
+  <div class="weui-tabbar">
+    <a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+      <span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+      <div class="weui-tabbar__icon">
+        <!-- <img src="./images/icon_nav_button.png" alt=""> -->
+      </div>
+      <p class="weui-tabbar__label">微信</p>
+    </a>
+    <a href="#tab2" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <!-- <img src="./images/icon_nav_msg.png" alt=""> -->
+      </div>
+      <p class="weui-tabbar__label">通讯录</p>
+    </a>
+    <a href="#tab3" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <!-- <img src="./images/icon_nav_article.png" alt=""> -->
+      </div>
+      <p class="weui-tabbar__label">发现</p>
+    </a>
+    <a href="#tab4" class="weui-tabbar__item">
+      <div class="weui-tabbar__icon">
+        <!-- <img src="./images/icon_nav_cell.png" alt=""> -->
+      </div>
+      <p class="weui-tabbar__label">我</p>
+    </a>
+  </div>
+</div>
+<script src="zepto.js"></script>
+<script src="jquery-weui.js"></script>  
+ <script>
+//  $(document).on("click", "#show-loading", function() {
+//         $.showLoading("正在提交，请稍后",3000);
+//         setTimeout(function() {
+//           $.hideLoading();
+//         },2000)
+//       });
+
+
+</script> 
+</body>
+</html>
