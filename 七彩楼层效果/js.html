@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+
+            height: 10000px;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+        }
+        div{
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            color: white;
+            text-align: center;
+            line-height: 600px;
+            font-size: 56px;
+
+        }
+        li{
+
+            height: 30px;
+            /*background: black;*/
+
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+            margin: 3px;
+            font-size: 24px;
+
+
+            line-height: 30px;
+
+
+
+        }
+        li a{
+            color: white;
+            display: inline-block;
+            text-align: center;
+            width: 100px;
+            background: black;
+            border-bottom-left-radius: 20px;
+            border-top-left-radius: 20px;
+
+        }
+            ul{
+
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                overflow: hidden;
+                text-align: right;
+
+
+
+
+            }
+
+
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="#box1">1</a></li>
+    <li><a href="#box2">2</a></li>
+    <li><a href="#box3">3</a></li>
+    <li><a href="#box4">4</a></li>
+    <li><a href="#box5">5</a></li>
+    <li><a href="#box6">6</a></li>
+    <li><a href="#box7">7</a></li>
+</ul>
+<div id="box1" style="background: yellow">1</div>
+<div id="box2" style="background: pink">2</div>
+<div id="box3" style="background: thistle">3</div>
+<div id="box4" style="background: skyblue">4</div>
+<div id="box5" style="background: tomato">5</div>
+<div id="box6" style="background: wheat">6</div>
+<div id="box7" style="background: greenyellow">7</div>
+
+</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+$(function(){
+        function Gund(){
+            var divId=""
+            $(document).scroll(function(){
+                var scrllTop=$(document).scrollTop();
+
+                if(scrllTop<=0){
+                   $("ul").slideUp(1000)
+
+                }else{
+                    $("ul").css("display","block");
+                }
+
+                $("div").each(function(index,elem){
+
+
+                    if(scrllTop>=$(this).offset().top){
+                        divId=$(this).attr("id")
+                    }
+                    console.log(divId)
+                })
+
+                $("li a").css("width",100);
+
+
+                $("a[href=#"+divId+"]").css("width",200);
+
+            })
+        }
+                 Gund();
+
+        $("a").click(function (){
+        $(document).off("scroll");
+
+
+        var top = $($(this).attr("href")).offset().top;
+            if(top<=0){
+                $("ul").slideUp(1000)
+            }
+        $("html,body").animate({"scrollTop":top},1000,function (){
+
+            Gund();
+        });
+
+
+
+
+    })
+
+
+})
+
+
+</script>

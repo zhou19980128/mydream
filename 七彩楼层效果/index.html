@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{margin: 0;padding: 0;list-style: none;cursor:pointer;}
+      #box{width: 1000px;margin: 0 auto;font-size: 100px;text-align: center;color: #fff;}
+      #box div:nth-child(1){background: red;height: 800px;line-height: 800px;}
+      #box div:nth-child(2){background: orange;height: 600px;line-height: 600px;}
+      #box div:nth-child(3){background: yellow;height: 400px;line-height: 400px;}
+      #box div:nth-child(4){background: green;height: 500px;line-height: 500px;}
+      #box div:nth-child(5){background: blue;height: 700px;line-height: 700px;}
+      #box div:nth-child(6){background: skyblue;height: 900px;line-height: 900px;}
+      #wrap{width: 100px;position: fixed;bottom:10px;right:0;color: #fff;display: none;}
+      #wrap li{height: 30px;line-height: 30px;text-align: center;border:2px solid #fff;background: #000;border-radius: 10px 0 0 10px;}
+    </style>
+</head>
+<body>
+<div id="box">
+   <div>1F</div>
+   <div>2F</div>
+   <div>3F</div>
+   <div>4F</div>
+   <div>5F</div>
+   <div>6F</div> 
+</div>
+<div id="wrap">
+<li>1F <span>珠宝配饰</span></li>
+<li>2F <span>休闲女装</span></li>
+<li>3F <span>精品男装</span></li>
+<li>4F <span>时尚家居</span></li>
+<li>5F <span>动漫影城</span></li>
+<li>6F <span>智能数码</span></li>
+<li id="return">△△△</li>
+</div>
+<script src="./jquery-2.2.0.js"></script>
+<script>
+$(function(){
+//思路：
+$(window).scroll(function(){
+if($(this).scrollTop()>30){// 1.向下滑动滚轮，右下侧信息显示
+    $('#wrap').slideDown()
+}else{ // 4.楼层在顶部时，信息隐藏，监听滚轮滑动
+    $('#wrap').slideUp()
+}
+// 2.点击楼层，跳转到对应楼层，其实就是让楼层顶部offsetTop值为0；滑动楼层，显示对应楼层信息
+$.each(arr,function(i,n){//此刻就是找到n值去触发我们的显示隐藏
+  if($(window).scrollTop()>=n-300){//就是上一个楼层还余下三百的位置在可视区域内，就让当前楼层的信息显示出来
+    $('#wrap li').eq(i).stop().animate({'marginLeft':-100}).find('span').show().end().siblings().stop().animate({'marginLeft':0}).find('span').hide().end();
+  }
+  })
+})
+var arr=[];
+$('#box div').each(function(){
+    arr.push(parseInt($(this).offset().top))
+})
+console.log(arr)
+$('#wrap li').not('#return').click(function(){
+    var ind = $(this).index();
+    $('body,html').stop().animate({'scrollTop':arr[ind]});
+})
+// 3.点击回到顶部按钮，实现一键回到顶部。
+$('#return').click(function(){
+    $('body,html').stop().animate({'scrollTop':arr[0]});
+})    
+})
+    
+</script>    
+</body>
+</html>
